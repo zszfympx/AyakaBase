@@ -1,6 +1,7 @@
 package com.zszf.ayakabase.mixin;
 
 import com.zszf.ayakabase.Ayakabase;
+import com.zszf.ayakabase.events.events.PostUpdateEvent;
 import com.zszf.ayakabase.events.events.PreUpdateEvent;
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,5 +14,10 @@ public class MixinMinecraftClient {
     @Inject(method = "tick", at = @At("HEAD"))
     public void hookPreUpdateEvent(CallbackInfo ci) {
         Ayakabase.instance.eventManager.call(new PreUpdateEvent());
+    }
+
+    @Inject(method = "tick", at = @At("TAIL"))
+    public void hookPostUpdateEvent(CallbackInfo ci) {
+        Ayakabase.instance.eventManager.call(new PostUpdateEvent());
     }
 }
