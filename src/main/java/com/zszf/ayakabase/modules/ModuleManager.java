@@ -15,8 +15,6 @@ public class ModuleManager {
 
     public void init(){
         add(new AutoGG());
-
-        //TODO: events
     }
 
     public static Module getModule(String name) {

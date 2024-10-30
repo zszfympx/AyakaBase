@@ -1,7 +1,7 @@
 package com.zszf.ayakabase.modules;
 
+import com.zszf.ayakabase.Ayakabase;
 import com.zszf.ayakabase.annotations.ModuleInfo;
-import net.minecraft.client.MinecraftClient;
 
 public abstract class Module {
     protected String name;
@@ -21,6 +21,9 @@ public abstract class Module {
                 visible = v.visible();
             }
         }
+        if (enabled) {
+            Ayakabase.getInstance().eventManager.register(this);
+        }
     }
 
     public Module(ModuleInfo info){
@@ -31,16 +34,19 @@ public abstract class Module {
             keyBinding = info.keyBinding();
             visible = info.visible();
         }
+        if (enabled) {
+            Ayakabase.getInstance().eventManager.register(this);
+        }
     }
 
     public void toggle(){
         if(enabled){
             enabled = false;
-            // TODO: unregister events
+            Ayakabase.getInstance().eventManager.unregister(this);
             onDisable();
         }else{
             enabled = true;
-            // TODO: register events
+            Ayakabase.getInstance().eventManager.register(this);
             onEnable();
         }
     }
