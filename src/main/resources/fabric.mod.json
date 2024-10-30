@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "ayakabase",
+  "version": "${version}",
+  "name": "AyakaBase",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/ayakabase/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.zszf.ayakabase.client.AyakabaseClient"
+    ],
+    "main": [
+      "com.zszf.ayakabase.Ayakabase"
+    ]
+  },
+  "mixins": [
+    "ayakabase.mixins.json",
+    {
+      "config": "ayakabase.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
