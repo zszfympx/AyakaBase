@@ -20,3 +20,4 @@ public class AutoGG extends Module{
         mc.inGameHud.getChatHud().addMessage(Text.of("GG"));
     }
 }
+

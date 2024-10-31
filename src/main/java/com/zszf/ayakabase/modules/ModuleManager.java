@@ -17,7 +17,7 @@ public class ModuleManager {
         add(new AutoGG());
     }
 
-    public static Module getModule(String name) {
+    public Module getModule(String name) {
         for (Module module : modules) {
             if(Objects.equals(module.name, name)){
                 return module;
@@ -26,7 +26,7 @@ public class ModuleManager {
         return null;
     }
 
-    public static Module getModule(Class<? extends Module> module){
+    public Module getModule(Class<? extends Module> module) {
         for(Module m : modules){
             if(Objects.equals(m.name, module.getName())){
                 return m;

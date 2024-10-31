@@ -1,5 +1,6 @@
 package com.zszf.ayakabase;
 
+import com.zszf.ayakabase.command.CommandManager;
 import com.zszf.ayakabase.events.EventManager;
 import com.zszf.ayakabase.modules.ModuleManager;
 import com.zszf.ayakabase.utils.Const;
@@ -22,6 +23,8 @@ public class Ayakabase implements ModInitializer {
 
     public EventManager eventManager;
 
+    public CommandManager commandManager;
+
     @Override
     public void onInitialize() {
         logger.info("Initializing Ayakabase");
@@ -29,6 +32,8 @@ public class Ayakabase implements ModInitializer {
         moduleManager.init();
         eventManager = new EventManager();
         instance = this;
+        commandManager = new CommandManager();
+        commandManager.init();
     }
 
 }
